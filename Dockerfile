@@ -6,7 +6,7 @@ COPY . .
 
 RUN chmod +x ./gradlew && ./gradlew --no-daemon bootWar
 
-FROM openjdk:11-jre-alpine
+FROM openjdk:11-jre-slim
 
 WORKDIR /app
 
