@@ -34,10 +34,10 @@ jobs:
     
     steps:
     - name: SSH deploy
-      uses: volodymyr-borodin/ssh-remove-run@v1
+      uses: Flaavius/ssh-commands@1.0
       with:
-        user: ${{ secrets.SSH_USER }}
+        username: ${{ secrets.SSH_USER }}
         host: ${{ secrets.SSH_HOST }}
-        private-key-path: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: ~/fastshare/deploy.sh
+        password: ${{ secrets.SSH_PASSWORD }}
+        command: sh ~/fastshare/deploy.sh
     
