@@ -26,3 +26,18 @@ jobs:
         no-cache: true
         tags: xolider/fastshare-api
         push: true
+
+  deploy:
+    needs: build
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: SSH deploy
+      uses: volodymyr-borodin/ssh-remove-run@v1
+      with:
+        user: ${{ secrets.SSH_USER }}
+        host: ${{ secrets.SSH_HOST }}
+        private-key-path: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: ~/fastshare/deploy.sh
+    
