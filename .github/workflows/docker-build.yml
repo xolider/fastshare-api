@@ -41,3 +41,15 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         command: sh ~/fastshare/deploy.sh
     
+  publish-javadoc:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup JDK 11
+      uses: actions/setup-java@v3.6.0
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Run publish HTML
+      run: chmod +x ./gradlew && ./gradlew dokkaHtml
+        
